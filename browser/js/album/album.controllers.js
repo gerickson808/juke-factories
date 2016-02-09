@@ -29,6 +29,9 @@ juke.controller('AlbumCtrl', function($scope, $http, $rootScope, $log, StatsFact
     $scope.currentSong = PlayerFactory.getCurrentSong();
   };
 
+  $scope.getCurrentSong = PlayerFactory.getCurrentSong;
+  $scope.isPlaying = PlayerFactory.isPlaying;
+
   function next () { PlayerFactory.next();}
   function prev () { PlayerFactory.previous();}
   // incoming events (from Player, toggle, or skip)

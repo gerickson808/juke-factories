@@ -69,6 +69,10 @@ juke.factory('PlayerFactory', function($rootScope){
 		return currentSong ? 100 * audio.currentTime / audio.duration : 0;
 	}
 
+	function getSongs(){
+		return songs;
+	}
+
 	return {
 		start: start,
 		pause: pause,
@@ -77,7 +81,8 @@ juke.factory('PlayerFactory', function($rootScope){
 		getCurrentSong: getCurrentSong,
 		next: next,
 		previous: previous,
-		getProgress: getProgress
+		getProgress: getProgress,
+		getSongs: getSongs
 	};
 
 
