@@ -6,7 +6,7 @@ juke.controller('PlayerCtrl', function ($scope, $rootScope, PlayerFactory) {
 
   // audio.addEventListener('ended', $scope.next);
   // audio.addEventListener('timeupdate', function () {
-  //   $scope.progress = 100 * audio.currentTime / audio.duration;
+
   //   $scope.$digest(); // no Angular-aware code is doing this for us here
   // });
 
