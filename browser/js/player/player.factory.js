@@ -2,12 +2,14 @@
 
 juke.factory('PlayerFactory', function(){
   // non-UI logic in here
+  var audio = document.createElement('audio');
   var songs = [];
   var playing = false;
   var currentSong;
   
-  function start(song){
-  	pause()
+  function start(song, collection){
+  	songs = collection;
+  	if (playing) pause();
   	playing = true;
   	if (song === currentSong) return resume();
   	currentSong = song;
