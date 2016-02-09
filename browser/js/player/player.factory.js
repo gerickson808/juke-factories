@@ -9,7 +9,7 @@ juke.factory('PlayerFactory', function(){
   
   function start(song, collection){
   	songs = collection;
-  	if (playing) pause();
+  	if (playing) this.pause();
   	playing = true;
   	if (song === currentSong) return resume();
   	currentSong = song;
@@ -33,7 +33,7 @@ juke.factory('PlayerFactory', function(){
 	}
 	
 	function getCurrentSong(){
-		return currentSong;
+		return currentSong || null;
 	}
 
 	function mod(index, length){
@@ -42,17 +42,18 @@ juke.factory('PlayerFactory', function(){
 
 	function next(){
 		var nextIndex = mod(songs.indexOf(currentSong)+1,songs.length);
-		start(songs[nextIndex]);
+
+		this.start(songs[nextIndex],songs);
 
 	}
 
 	function previous(){
 		var prevIndex = mod(songs.indexOf(currentSong)-1,songs.length);
-		start(songs[prevIndex]);
+		this.start(songs[prevIndex],songs);
 	}
 
 	function getProgress(){
-		return 80;
+		return currentSong ? 100 * audio.currentSong / audio.duration : 0;
 	}
 
 	return {
