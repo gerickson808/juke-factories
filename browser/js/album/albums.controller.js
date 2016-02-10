@@ -1,10 +1,10 @@
 juke.controller('AlbumsCtrl', function($scope, $http, $rootScope, $log, StatsFactory, PlayerFactory) {
 
+  $scope.showAlbums = false;
   // load our initial data
   $http.get('/api/albums/')
   .then(res => res.data)
   .then(albums => {
-    
     albums.forEach(function (album, i) {
       album.imageUrl = '/api/albums/' + album._id + '.image';
     });
@@ -13,4 +13,9 @@ juke.controller('AlbumsCtrl', function($scope, $http, $rootScope, $log, StatsFac
     
   })
   .catch($log.error); // $log service can be turned on and off; also, pre-bound
+
+  $scope.$on('viewAlbums', function(){
+    $scope.showAlbums = true;
+  });
+
 });
