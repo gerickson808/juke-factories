@@ -15,6 +15,7 @@
     <script src="/js/player/player.factory.js" defer></script>
     <script src="/js/player/sidebar.controller.js" defer></script>
     <script src="/js/artist/artist.controller.js" defer></script>
+    <script src="/js/artist/artist.factory.js" defer></script>
 </head>
 
 <body ng-app="juke">
@@ -40,7 +41,7 @@
               <h3>Artists</h3>
                 <div class="list-group">
                   <div class="list-group-item" ng-repeat="artist in artists">
-                  <a href="#">{{ artist.name }}</a>
+                  <a href="#" ng-click="viewAllArtist(artist)">{{ artist.name }}</a>
                 </div>
               </div>
             </div>

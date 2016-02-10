@@ -1,4 +1,4 @@
-juke.controller("ArtistCtrl",function($scope,$rootScope, $http){
+juke.controller("ArtistCtrl",function($scope,$rootScope, $http, ArtistFactory){
 
 	$scope.showAllArtists = false;
 
@@ -10,5 +10,13 @@ juke.controller("ArtistCtrl",function($scope,$rootScope, $http){
 	$scope.$on('viewAllArtists',function(){
 		$scope.showAllArtists = true;
 	});
+
+	$scope.viewAllArtist = function(artist){
+		ArtistFactory.getAlbums(artist)
+		.then(function(albums){
+			$scope.albums = albums;
+		});
+
+	}
 
 });
