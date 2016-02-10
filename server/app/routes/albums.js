@@ -9,6 +9,8 @@ module.exports = router;
 router.get('/', function (req, res, next) {
   mongoose.model('Album')
   .find(req.query)
+  .populate('artists songs')
+  .deepPopulate('songs.artists')
   .then(function (albums) {
     res.json(albums);
   })

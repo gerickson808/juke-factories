@@ -34,7 +34,7 @@
                 <h3>Albums</h3>
                 <div class="row">
                     <div class="col-xs-4" ng-repeat="album in albums">
-                        <a class="thumbnail" href="#">
+                        <a class="thumbnail" href="#" ng-click="viewAlbum(album)">
                             <img src="{{album.imageUrl}}">
                             <div class="caption">
                                 <h5>
@@ -47,7 +47,7 @@
                 </div>
             </div>
 
-            <div ng-hide="true" class="album" ng-controller="AlbumCtrl">
+            <div ng-show="singleAlbum" class="album" ng-controller="AlbumCtrl">
                 <p>
                     <h3>{{ album.name }}</h3>
                     <h4>{{ fullDuration }}</h4>

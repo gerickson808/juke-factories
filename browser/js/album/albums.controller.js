@@ -7,6 +7,11 @@ juke.controller('AlbumsCtrl', function($scope, $http, $rootScope, $log, StatsFac
   .then(albums => {
     albums.forEach(function (album, i) {
       album.imageUrl = '/api/albums/' + album._id + '.image';
+      album.songs.forEach(function (song, i) {
+        song.audioUrl = '/api/songs/' + song._id + '.audio';
+        song.albumIndex = i;
+        console.log(song);
+      });
     });
 
     $scope.albums = albums;
@@ -17,5 +22,10 @@ juke.controller('AlbumsCtrl', function($scope, $http, $rootScope, $log, StatsFac
   $scope.$on('viewAlbums', function(){
     $scope.showAlbums = true;
   });
+
+  $scope.viewAlbum = function(album){
+    $scope.showAlbums = false;
+    $rootScope.$broadcast('viewAlbum', album);
+  };
 
 });
