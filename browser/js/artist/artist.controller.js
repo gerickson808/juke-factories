@@ -9,9 +9,15 @@ juke.controller("ArtistCtrl",function($scope,$rootScope, $http, ArtistFactory){
 
 	$scope.$on('viewAllArtists',function(){
 		$scope.showAllArtists = true;
+		$scope.showOneArtist = false;
 	});
 
-	$scope.viewAllArtist = function(artist){
+	$scope.$on('viewAlbums',function(){
+		$scope.showAllArtists = false;
+		$scope.showOneArtist = true;
+	});
+
+	$scope.viewArtist = function(artist){
 
 		$scope.artist=artist;
 
@@ -34,6 +40,7 @@ juke.controller("ArtistCtrl",function($scope,$rootScope, $http, ArtistFactory){
 
 	$scope.viewAlbum = function(album){
 		$scope.showOneArtist = false;
+		$scope.showAllArtists = false;
 		$rootScope.$broadcast('viewAlbum', album);
 	}
 

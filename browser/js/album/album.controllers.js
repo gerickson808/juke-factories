@@ -36,6 +36,10 @@ juke.controller('AlbumCtrl', function($scope, $http, $rootScope, $log, StatsFact
     $scope.singleAlbum = false;
   });
 
+  $scope.$on('viewAllArtists', function(){
+    $scope.singleAlbum = false;
+  });
+
   // main toggle
   $scope.toggle = function (song) {
     if ($scope.playing && song === $scope.currentSong) {

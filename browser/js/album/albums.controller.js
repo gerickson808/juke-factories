@@ -22,6 +22,10 @@ juke.controller('AlbumsCtrl', function($scope, $http, $rootScope, $log, StatsFac
     $scope.showAlbums = true;
   });
 
+  $scope.$on('viewAllArtists', function(){
+    $scope.showAlbums = false;
+  });
+
   $scope.viewAlbum = function(album){
     $scope.showAlbums = false;
     $rootScope.$broadcast('viewAlbum', album);
