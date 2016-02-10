@@ -12,11 +12,29 @@ juke.controller("ArtistCtrl",function($scope,$rootScope, $http, ArtistFactory){
 	});
 
 	$scope.viewAllArtist = function(artist){
+
+		$scope.artist=artist;
+
 		ArtistFactory.getAlbums(artist)
 		.then(function(albums){
 			$scope.albums = albums;
 		});
 
+		ArtistFactory.getSongs(artist)
+		.then(function(songs){
+			$scope.songs = songs;
+			console.log($scope.songs);
+		});
+
+		$scope.showAllArtists = false;
+		$scope.showOneArtist = true;
+
+
+	}
+
+	$scope.viewAlbum = function(album){
+		$scope.showOneArtist = false;
+		$rootScope.$broadcast('viewAlbum', album);
 	}
 
 });

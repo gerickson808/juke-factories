@@ -10,7 +10,6 @@ juke.controller('AlbumsCtrl', function($scope, $http, $rootScope, $log, StatsFac
       album.songs.forEach(function (song, i) {
         song.audioUrl = '/api/songs/' + song._id + '.audio';
         song.albumIndex = i;
-        console.log(song);
       });
     });
 
